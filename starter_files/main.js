@@ -82,17 +82,7 @@ let formData = [
   }
 ];
 
-// HINTS:
-// As you can see, we access the first element in the array
-// with [0] and then grab the property "label" using the "." operator
-( function(){
-  // Select the first element from the array
-  let first = formData[ 0 ];
-  // Log the first object
-  console.log( first );
-  // Log the string "First Name"
-  console.log( first.label );
-} )();
+
 
 
 // -------- Your Code Goes Below this Line --------
@@ -106,10 +96,24 @@ formData.forEach(function(fieldData) {
   input.setAttribute('placeholder', fieldData.label);
   input.setAttribute('id', fieldData.id);
 
-  formFields.appendChild(input);
+  if (fieldData.type === 'select'){
+    let selectButton = document.createElement('select');
+    let selectButtonContent = document.createElement('option');
 
-  if (formData.options === true) {
-    
+    selectButton.setAttribute('placeholder', fieldData.label);
+
+    formFields.appendChild(selectButton);
+
+    for (let i = 0; i < fieldData.options.length; i++) {
+      selectButton.setAttribute('option', fieldData.options[i].label);
+    }
+    // debugger
   }
-
+  if (fieldData.type === 'textarea'){
+    let textAreaButton = document.createElement('textarea');
+    textAreaButton.setAttribute('placeholder', fieldData.label);
+    formFields.appendChild(textAreaButton);
+    // debugger
+  }
+  formFields.appendChild(input);
 });
