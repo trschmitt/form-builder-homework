@@ -97,23 +97,28 @@ formData.forEach(function(fieldData) {
   input.setAttribute('id', fieldData.id);
 
   if (fieldData.type === 'select'){
-    let selectButton = document.createElement('select');
-    let selectButtonContent = document.createElement('option');
+    let selectButton        = document.createElement('select');
 
     selectButton.setAttribute('placeholder', fieldData.label);
 
     formFields.appendChild(selectButton);
 
-    for (let i = 0; i < fieldData.options.length; i++) {
-      selectButton.setAttribute('option', fieldData.options[i].label);
+    fieldData.options.forEach(function(selectData) {
+      let selectButtonContent = document.createElement('option');
+
+      selectButtonContent.setAttribute('label', selectData.label);
+      selectButtonContent.setAttribute('value', selectData.value);
+
+      selectButton.appendChild(selectButtonContent);
+    });
+  }
+      else if (fieldData.type === 'textarea'){
+        let textAreaButton   = document.createElement('textarea');
+
+        textAreaButton.setAttribute('placeholder', fieldData.label);
+        
+        formFields.appendChild(textAreaButton);
+    } else {
+      formFields.appendChild(input);
     }
-    // debugger
-  }
-  if (fieldData.type === 'textarea'){
-    let textAreaButton = document.createElement('textarea');
-    textAreaButton.setAttribute('placeholder', fieldData.label);
-    formFields.appendChild(textAreaButton);
-    // debugger
-  }
-  formFields.appendChild(input);
 });
