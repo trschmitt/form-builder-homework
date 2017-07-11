@@ -96,26 +96,20 @@ let formData = [
 
 
 // -------- Your Code Goes Below this Line --------
+let formFields  = document.getElementById( "fields" );
 
+formData.forEach(function(fieldData) {
 
+  let input     = document.createElement('input');
 
+  input.setAttribute('type', fieldData.type);
+  input.setAttribute('placeholder', fieldData.label);
+  input.setAttribute('id', fieldData.id);
 
-let formFields       = document.getElementById( "fields" );
-let formButtons      = document.createElement( 'form' );
-let firstName        = document.createElement('input');
-let firstNameType    = document.setAttribute( 'type', "text" );
+  formFields.appendChild(input);
 
+  if (formData.options === true) {
+    
+  }
 
-formFields.appendChild(formButtons);
-formButtons.appendChild(firstName);
-firstName.appendChild(firstNameType);
-
-
-
-
-// let email     = document.createElement('input');
-// let website   = document.createElement('input');
-// let language  = document.createElement('input');
-// let comment   = document.createElement('input');
-// let mobile    = document.createElement('input');
-// let home      = document.createElement('input');
+});
