@@ -98,3 +98,24 @@ let formData = [
 // -------- Your Code Goes Below this Line --------
 
 
+
+
+let formFields       = document.getElementById( "fields" );
+let formButtons      = document.createElement( 'form' );
+let firstName        = document.createElement('input');
+let firstNameType    = document.setAttribute( 'type', "text" );
+
+
+formFields.appendChild(formButtons);
+formButtons.appendChild(firstName);
+firstName.appendChild(firstNameType);
+
+
+
+
+// let email     = document.createElement('input');
+// let website   = document.createElement('input');
+// let language  = document.createElement('input');
+// let comment   = document.createElement('input');
+// let mobile    = document.createElement('input');
+// let home      = document.createElement('input');
